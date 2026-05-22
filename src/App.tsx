@@ -1,10 +1,13 @@
 import { Shield, AlertCircle } from 'lucide-react';
+import { AuthenticatedTemplate, UnauthenticatedTemplate } from '@azure/msal-react';
 import { useData } from './hooks/useData';
+import { useAuth } from './auth/useAuth';
 import Header from './components/Header';
 import SummaryCards from './components/SummaryCards';
 import RadarOverview from './components/RadarOverview';
 import FunctionBarChart from './components/FunctionBarChart';
 import FunctionSection from './components/FunctionSection';
+import LoginPage from './components/LoginPage';
 
 function LoadingScreen() {
   return (
@@ -32,7 +35,8 @@ function ErrorScreen({ message }: { message: string }) {
   );
 }
 
-export default function App() {
+// Inner dashboard — only rendered when MSAL confirms authenticated
+function Dashboard() {
   const { data, loading, error } = useData();
 
   if (loading) return <LoadingScreen />;
@@ -41,17 +45,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950">
       <Header />
-
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         <section>
           <SummaryCards data={data} />
         </section>
-
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <RadarOverview data={data} />
           <FunctionBarChart functions={data.functions} />
         </section>
-
         <section>
           <div className="mb-4">
             <h2 className="text-base font-semibold text-white">Function Breakdown</h2>
@@ -65,11 +66,33 @@ export default function App() {
             ))}
           </div>
         </section>
-
         <footer className="text-center text-xs text-slate-600 pb-4">
           NIST Cybersecurity Framework 2.0 · Assessment Dashboard · {new Date().getFullYear()}
         </footer>
       </main>
     </div>
+  );
+}
+
+// Domain guard — shown when authenticated but domain is not allowed
+function UnauthorizedScreen() {
+  const { email } = useAuth();
+  return <LoginPage unauthorizedEmail={email} />;
+}
+
+// Root — MSAL decides which branch to render
+export default function App() {
+  const { isAuthorized } = useAuth();
+
+  return (
+    <>
+      <AuthenticatedTemplate>
+        {isAuthorized ? <Dashboard /> : <UnauthorizedScreen />}
+      </AuthenticatedTemplate>
+
+      <UnauthenticatedTemplate>
+        <LoginPage />
+      </UnauthenticatedTemplate>
+    </>
   );
 }
