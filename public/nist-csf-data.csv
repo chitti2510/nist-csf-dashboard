@@ -1,4 +1,4 @@
-function,functionCode,category_code,category_name,subcategory_code,subcategory_description,implementation_examples,informative_references,controls_checks,description_of_controls,current_tier_score,current_tier,recommendation,target_tier,target_tier_score,target_tier_comments,client_comments
+function,functionCode,category_code,category_name,subcategory_code,subcategory_description,implementation_examples,informative_references,controls_checks,Understanding_of_controls_Implemented,current_tier_score,current_tier,recommendation,target_tier,target_tier_score,target_tier_comments,client_comments
 Detect,DE,DE.CM,Continuous Monitoring,DE.CM-01,"Networks and network services are monitored to find potentially adverse events
 
 This control mandates the implementation of Network Security Monitoring (NSM). It requires the organization to actively capture, analyze, and alert on network traffic patterns to identify active intrusions, malware communication (C2), or data exfiltration.
@@ -163,7 +163,7 @@ Governance of Access Logs: Unlike many organizations where logs are only reviewe
 
 Surveillance Retention & Coverage: CCTV systems are tuned for effective identification (facial clarity) and meet retention requirements, ensuring forensic data is available for historical investigations.
 
-Visitor Management: Strict escort and monitoring protocols are in place for third-party technicians, ensuring that non-employees are never left unmonitored in critical zones.",3,Tier 3: Repeatable,"To move from Level 3 (Managed) to Level 4 (Integrated/Adaptive), PCDS recommends linking the ""Physical"" world to the ""Digital"" world.
+Visitor Management: Strict escort and monitoring protocols are in place for third-party technicians, ensuring that non-employees are never left unmonitored in critical zones.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, PCDS recommends linking the ""Physical"" world to the ""Digital"" world.
 
 Phase 1: Physical-Logical Correlation (The ""Superman"" Rule)
 
@@ -311,7 +311,7 @@ SaaS Supply Chain Visibility: The organization actively monitors third-party API
 
 Closed-Loop Offboarding: A technical validation process exists to verify that vendor access is revoked upon contract termination, preventing the common ""forgotten vendor account"" vulnerability.
 
-Active Alert Consumption: Security notifications and bulletins from cloud providers and critical vendors are ingested directly into the SOC workflow, ensuring rapid awareness of external outages or supply chain compromises.",3,Tier 3: Repeatable,"To move from Level 3 (Managed) to Level 4 (Integrated), the recommendations focus on Automating the Response to third-party threats.
+Active Alert Consumption: Security notifications and bulletins from cloud providers and critical vendors are ingested directly into the SOC workflow, ensuring rapid awareness of external outages or supply chain compromises.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the recommendations focus on Automating the Response to third-party threats.
 
 Phase 1: Automate ""Risky App"" Revocation (API Security)
 
@@ -319,7 +319,7 @@ Action: Configure your Cloud Access Security Broker (CASB) or O365 policies to a
 
 Rule: ""If a user grants a 'Low Reputation' app (e.g., a PDF Converter) access to 'Read All Email', revoke the token immediately and alert the user.""
 
-Why: You are currently monitoring it (seeing it happen). Level 4 is stopping it before data leaves.
+Why: You are currently monitoring it (seeing it happen). Tier 4: Adaptive is stopping it before data leaves.
 
 Phase 2: The ""Break Glass"" Test (MSP Drill)
 
@@ -475,7 +475,7 @@ Deep Root Cause Analysis (RCA): The analysis process is not superficial. For eve
 
 Automated Data Enrichment: The investigation workflow is accelerated by automation. Security tools automatically inject threat intelligence context (IP reputation, domain age, suspicion level) into the alert, allowing analysts to make rapid decisions without manual """"lookup"""" fatigue.
 
-Scope Correlation: The organization practices effective """"Scoping."""" When an asset is compromised, analysts do not view it in isolation; they actively investigate lateral movement and correlated activity across other endpoints (Laptops B, C, D) to determine the full blast radius of the event.""",3,Tier 3: Repeatable,"""To move from Level 3 (Managed) to Level 4 (Optimized), the organization should focus on using the output of analysis to drive prevention.
+Scope Correlation: The organization practices effective """"Scoping."""" When an asset is compromised, analysts do not view it in isolation; they actively investigate lateral movement and correlated activity across other endpoints (Laptops B, C, D) to determine the full blast radius of the event.""",3,Tier 3: Repeatable,"""To move from Tier 3: Repeatable to Tier 4: Adaptive, the organization should focus on using the output of analysis to drive prevention.
 
 Phase 1: MITRE ATT&CK Mapping (Strategic)
 
@@ -553,7 +553,7 @@ Foundational Integrity (NTP): Time synchronization is actively managed across th
 
 Context-Aware Analysis: The SIEM capability allows for dynamic linking of Identity to Network activity. Analysts can attribute network traffic (IP addresses) to specific users, solving the ""Who did this?"" question without manual cross-referencing.
 
-Active Correlation Logic: The system is capable of ""Fusion."" While separate alerts still occur for distinct devices, the logic exists to merge related events (e.g., Event A on Firewall + Event B on Endpoint) into a single, high-fidelity alert when a correlation rule is triggered. This demonstrates a move towards ""Incident-Centric"" rather than ""Alert-Centric"" monitoring.",3,Tier 3: Repeatable,"To move from Level 3 to Level 4 (Optimized), the goal is to reduce the ""2 diff alerts"" scenario and force the system to tell a complete story automatically.
+Active Correlation Logic: The system is capable of ""Fusion."" While separate alerts still occur for distinct devices, the logic exists to merge related events (e.g., Event A on Firewall + Event B on Endpoint) into a single, high-fidelity alert when a correlation rule is triggered. This demonstrates a move towards ""Incident-Centric"" rather than ""Alert-Centric"" monitoring.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to reduce the ""2 diff alerts"" scenario and force the system to tell a complete story automatically.
 
 Phase 1: Expand ""Fusion Rules"" (tuning)
 
@@ -627,7 +627,7 @@ Defined Investigation Process: The organization has a formal Incident Handling p
 
 Lateral Scope Assessment: The investigation workflow includes mandatory checks for ""Blast Radius"" (checking neighbors/lateral movement). This ensures the technical scope of an infection is reasonably well understood.
 
-Data Exfiltration Visibility: While network logs are available to determine if data left the building (exfiltration vs. encryption), this appears to be a manual, ad-hoc capability (""we should be able to"") rather than an automated or playbook-driven step.",2,Tier 2: Risk Informed,"To move to Level 3 (Managed), the SOC needs to know what they are protecting without asking.
+Data Exfiltration Visibility: While network logs are available to determine if data left the building (exfiltration vs. encryption), this appears to be a manual, ad-hoc capability (""we should be able to"") rather than an automated or playbook-driven step.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, the SOC needs to know what they are protecting without asking.
 
 Phase 1: The ""Crown Jewels"" Static List (Immediate)
 
@@ -712,7 +712,7 @@ Automated Workflow Integration: There is a seamless integration between the dete
 
 Strict Confidentiality (RBAC): The organization adheres to the ""Need-to-Know"" principle. Incident data is siloed within a dedicated project/queue, preventing unauthorized staff (e.g., general IT support) from viewing sensitive security investigations.
 
-Executive Visibility: Real-time dashboards are available for leadership, allowing for ""Read-Only"" situational awareness without disrupting the technical responders during a crisis.",3,Tier 3: Repeatable,"To move from Level 3 to Level 4 (Optimized), the focus should be on Securing the informal channels and Bi-directional Automation.
+Executive Visibility: Real-time dashboards are available for leadership, allowing for ""Read-Only"" situational awareness without disrupting the technical responders during a crisis.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the focus should be on Securing the informal channels and Bi-directional Automation.
 
 Phase 1: Secure the ""Out-of-Band"" Channel (WhatsApp Risk)
 
@@ -841,7 +841,7 @@ Collaborative Declaration Model: For high-severity (Sev-1) incidents, the proces
 
 Lifecycle Management: The process includes explicit clarity on Upgrading (escalating) or Downgrading (closing/false positive) incidents. This prevents the ""Zombie Ticket"" phenomenon where resolved issues remain flagged as critical breaches in the system.
 
-Regulatory Awareness: The SOC analysts are trained on the implications of the declaration, ensuring they understand that specific triggers (e.g., Data Loss) activate downstream compliance workflows.",3,Tier 3: Repeatable,"To move from Level 3 (Managed) to Level 4 (Optimized), the goal is to reduce the ""Meeting Time"" for obvious disasters.
+Regulatory Awareness: The SOC analysts are trained on the implications of the declaration, ensuring they understand that specific triggers (e.g., Data Loss) activate downstream compliance workflows.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to reduce the ""Meeting Time"" for obvious disasters.
 
 Phase 1: ""Pre-Authorized"" Sev-1 List (Speed)
 
@@ -910,7 +910,7 @@ Strategic Awareness: The security team understands the organizational mission ("
 
 Process Stagnation (The BIA Bottleneck): The Business Impact Analysis is the critical engine of this control. The fact that it has been ""Work in Progress"" for over 6 months suggests ""Analysis Paralysis"" or a lack of engagement from business stakeholders. A BIA that is not finalized is effectively useless; it cannot be used to justify budget or prioritize patching today.
 
-Risk: In the 6 months the BIA has been stalled, the business has likely changed. The data in the draft might already be obsolete.",2,Tier 2: Risk Informed,"To move to Level 3 (Compliant), you must unblock the BIA process immediately. A simplistic, finished BIA is better than a perfect, unfinished one.
+Risk: In the 6 months the BIA has been stalled, the business has likely changed. The data in the draft might already be obsolete.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, you must unblock the BIA process immediately. A simplistic, finished BIA is better than a perfect, unfinished one.
 
 Phase 1: Adopt ""Agile BIA"" (MVP Approach)
 
@@ -996,7 +996,7 @@ Contractual Disconnect (High Risk): It is assessed as ""highly unlikely"" that a
 
 Insurance Ambiguity (Verification Required): The status of Cyber Liability Insurance is unconfirmed. If a policy exists, the security team is likely unaware of its technical mandates (e.g., ""MFA required on all admin accounts""), effectively voiding the coverage. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Reporting Structure: While Quarterly Board Reporting is assumed, without a formalized schedule or template, it risks being skipped or lacking the specific metrics stakeholders (the Board) need to make informed liability decisions.",1,Tier 1: Partial,"To move from Level 1 to Level 2 (Risk Informed), you must essentially perform ""Discovery"" on your own legal and contractual landscape.
+Reporting Structure: While Quarterly Board Reporting is assumed, without a formalized schedule or template, it risks being skipped or lacking the specific metrics stakeholders (the Board) need to make informed liability decisions.",1,Tier 1: Partial,"To move from Tier 1: Partial to Tier 2: Risk Informed, you must essentially perform ""Discovery"" on your own legal and contractual landscape.
 
 Phase 1: The ""Obligation Discovery"" (Immediate)
 
@@ -1124,7 +1124,7 @@ Compliance Mapping (Verification Required): It is currently unknown if a Complia
 
 Data Sovereignty Uncertainty (Verification Required): The organization's Data Residency status is unconfirmed. In an era of strict cross-border data transfer laws (GDPR, DPDP), not knowing if customer data is stored in the US, EU, or India is a compliance failure waiting to happen.
 
-DSAR Readiness (Verification Required): It is unknown if the organization has a workflow for Data Subject Access Requests (DSAR). If a user asks to be ""forgotten,"" the lack of a defined process likely leads to chaotic, manual searches or incomplete deletion.",2,Tier 2: Risk Informed,"To move from Level 1 to Level 2 (Risk Informed), you must essentially ""Auditing the Lawyers"" to understand the constraints.
+DSAR Readiness (Verification Required): It is unknown if the organization has a workflow for Data Subject Access Requests (DSAR). If a user asks to be ""forgotten,"" the lack of a defined process likely leads to chaotic, manual searches or incomplete deletion.",2,Tier 2: Risk Informed,"To move from Tier 1: Partial to Tier 2: Risk Informed, you must essentially ""Auditing the Lawyers"" to understand the constraints.
 
 Phase 1: The Privacy Impact Assessment (PIA) - Priority
 
@@ -1209,7 +1209,7 @@ Dependency Blindness (Verification Required): It is unknown if the organization 
 
 SLA/Architecture Mismatch (Verification Required): There is no confirmation that the underlying security architecture (redundancy, failover) is actually capable of meeting the Service Level Agreements (SLAs) promised to clients. This disconnect is a common source of liability. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Supply Chain Opacity: The confirmed absence of Third-Party Dependency transparency means stakeholders are unaware of AnsamcAL's own vendors. This lack of transparency can damage trust during a supply chain attack.",3,Tier 3: Repeatable,"To move to Level 3, the organization must map its technical assets to its external promises.
+Supply Chain Opacity: The confirmed absence of Third-Party Dependency transparency means stakeholders are unaware of AnsamcAL's own vendors. This lack of transparency can damage trust during a supply chain attack.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, the organization must map its technical assets to its external promises.
 
 Phase 1: The ""Critical Service"" Inventory
 
@@ -1287,7 +1287,7 @@ Vendor Criticality Gap (Confirmed): The organization does not have a Tiered Vend
 
 Supply Chain Incident Blindness (Confirmed): There is no Vendor Breach Protocol. If a critical software used by AnsamcAL (e.g., a monitoring tool or firewall firmware) is compromised, there is no defined playbook to assess exposure or sever connections, leaving the network vulnerable to ""Island Hopping"" attacks.
 
-Fourth-Party Opacity (Verification Required): It is assumed that Fourth-Party Risk (the vendor's vendors) is unmanaged. Given the on-prem nature, this is critical regarding hardware components (e.g., chip shortages affecting server replacement). PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",1,Tier 1: Partial,"To move from Level 1 to Level 2, you must identify the ""hidden"" dependencies of your on-premise environment.
+Fourth-Party Opacity (Verification Required): It is assumed that Fourth-Party Risk (the vendor's vendors) is unmanaged. Given the on-prem nature, this is critical regarding hardware components (e.g., chip shortages affecting server replacement). PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",1,Tier 1: Partial,"To move from Tier 1: Partial to Tier 2: Risk Informed, you must identify the ""hidden"" dependencies of your on-premise environment.
 
 Phase 1: The ""On-Prem"" Criticality List
 
@@ -1378,7 +1378,7 @@ Note: While this creates operational speed, it accumulates ""Security Debt"" tha
 
 Measurement Gap (The ""How do we know?"" problem): The confirmed absence of Success Metrics (e.g., ""Reduce Critical Risks by 10%"") means the strategy is static. The organization knows what it wants (Continuity) but lacks the methodology to track if its risk posture is improving or degrading over time.
 
-Stakeholder Breadth (Verification Required): It is currently unconfirmed if non-IT stakeholders (Legal, HR, Finance) actually contributed to this strategy. If they didn't, the ""Signed Charter"" might just be a rubber stamp rather than true organizational alignment. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Level 3, you must translate the ""Signed Charter"" into measurable Key Performance Indicators (KPIs).
+Stakeholder Breadth (Verification Required): It is currently unconfirmed if non-IT stakeholders (Legal, HR, Finance) actually contributed to this strategy. If they didn't, the ""Signed Charter"" might just be a rubber stamp rather than true organizational alignment. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, you must translate the ""Signed Charter"" into measurable Key Performance Indicators (KPIs).
 
 Phase 1: Codify the ""Continuity"" Exception
 
@@ -1462,7 +1462,7 @@ Governance Implication: By running weekly backups, the organization has implicit
 
 The Conflict: If the Business Executives believe they can only afford to lose 24 hours of data (RPO), then the current IT configuration is non-compliant with business needs.
 
-Undefined Boundaries (Verification Required): It is unknown if the Board has quantified their risk limits (e.g., ""We accept $10k loss""). Without these numbers, the IT team cannot accurately size their defenses (i.e., you shouldn't spend $100k to prevent a $10k loss). PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Level 2, you must validate if the implicit risk matches the desired risk.
+Undefined Boundaries (Verification Required): It is unknown if the Board has quantified their risk limits (e.g., ""We accept $10k loss""). Without these numbers, the IT team cannot accurately size their defenses (i.e., you shouldn't spend $100k to prevent a $10k loss). PCDS notes this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Tier 2: Risk Informed, you must validate if the implicit risk matches the desired risk.
 
 Phase 1: The ""Seven Day"" Challenge (Immediate)
 
@@ -1541,7 +1541,7 @@ Siloed Scoring Methodology: While a Risk Matrix exists, it is used ""only for th
 
 Late-Stage Involvement (Project Gap): The absence of mandatory Cyber Risk Assessments at the project initiation phase (""not present"") indicates that security is likely an afterthought. Projects (like new hydro plants or brand launches) are funded and designed without calculating their cyber risk exposure, creating ""Baked-In"" vulnerabilities.
 
-Structured Oversight (Positive): The existence of a Risk Committee is a strong governance enabler. It provides the necessary forum for the CISO to present risks, even if the scoring language needs harmonization.",3,Tier 3: Repeatable,"To move to Level 3 (Compliant), you must break down the wall between ""IT Risk"" and ""Business Risk.""
+Structured Oversight (Positive): The existence of a Risk Committee is a strong governance enabler. It provides the necessary forum for the CISO to present risks, even if the scoring language needs harmonization.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, you must break down the wall between ""IT Risk"" and ""Business Risk.""
 
 Phase 1: Harmonize the Risk Language (The ""Rosetta Stone"")
 
@@ -1614,7 +1614,7 @@ Formalized Acceptance (Strong): The existence of a mandatory sign-off workflow f
 
 Strategy Gaps (Transfer & Avoidance): The uncertainty regarding Cyber Insurance (Transfer) and project cancellations (Avoidance) suggests that the organization views risk management primarily as ""Fix it or Sign off on it."" The strategic options of ""Transferring the financial liability"" or ""Stopping the project entirely"" are not being actively managed or tracked. PCDS notes the Insurance verification as an ""Open Item"" for AnsamcAL management.
 
-Authority Ambiguity (Guidelines Missing): The absence of clear guidelines (""Cheat Sheet"") creates a governance risk. Without defined thresholds (e.g., ""Only the CFO can accept risks over $100k""), a junior manager might inadvertently sign off on a catastrophic risk using the standard form.",2,Tier 2: Risk Informed,"To move to Level 3 (Compliant), you must build the ""Guardrails"" around the ""Form.""
+Authority Ambiguity (Guidelines Missing): The absence of clear guidelines (""Cheat Sheet"") creates a governance risk. Without defined thresholds (e.g., ""Only the CFO can accept risks over $100k""), a junior manager might inadvertently sign off on a catastrophic risk using the standard form.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, you must build the ""Guardrails"" around the ""Form.""
 
 Phase 1: Define Authority Thresholds (The ""Who Signs?"" Rule)
 
@@ -1779,7 +1779,7 @@ Contextual Scoring Gap (Verification Required): We do not know if the organizati
 
 Register Hygiene (Verification Required): The ""health"" of the Risk Register is unknown. If the register contains risks that have been open for years without updates, the process is broken.
 
-Categorization Uncertainty: The lack of confirmed root-cause categorization prevents the organization from identifying systemic issues (e.g., ""Why do we keep having patching failures?"").",3,Tier 3: Repeatable,"To move to Level 2 (Risk Informed), you must validate and document the ""Rules of the Road"" for risk scoring.
+Categorization Uncertainty: The lack of confirmed root-cause categorization prevents the organization from identifying systemic issues (e.g., ""Why do we keep having patching failures?"").",3,Tier 3: Repeatable,"To move to Tier 2: Risk Informed, you must validate and document the ""Rules of the Road"" for risk scoring.
 
 Phase 1: The ""Rubric"" Validation (Immediate)
 
@@ -1853,7 +1853,7 @@ One-Sided Risk View (Confirmed): The confirmed absence of a ""Potential Benefit"
 
 Sales Enablement Blindness (Verification Required): It is unknown if the Sales team uses security to win deals. If AnsamcAL has strong security but the Sales team doesn't know how to pitch it (e.g., lacking a ""Trust Pack""), the company is leaving revenue on the table. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Innovation Friction (Verification Required): It is unknown if Security acts as an enabler for R&D. Without a clear ""Safe Innovation"" framework, the Security team likely defaults to blocking new technologies, forcing employees to use Shadow IT to get their jobs done.",2,Tier 2: Risk Informed,"To move to Level 2 (Risk Informed), you must flip the script and show the Business how security helps them make money.
+Innovation Friction (Verification Required): It is unknown if Security acts as an enabler for R&D. Without a clear ""Safe Innovation"" framework, the Security team likely defaults to blocking new technologies, forcing employees to use Shadow IT to get their jobs done.",2,Tier 2: Risk Informed,"To move to Tier 2: Risk Informed, you must flip the script and show the Business how security helps them make money.
 
 Phase 1: Build the ""Security Trust Pack"" (Immediate Sales Win)
 
@@ -1941,7 +1941,7 @@ Unknown ""Tone from the Top"" (Critical Gap): We cannot confirm if the Board and
 
 Accountability ambiguity (Verification Required): It is unknown if cybersecurity is formally written into the Job Descriptions (JDs) or KPIs of senior leaders. If the CISO is the only person with ""Security"" in their job description, the organization lacks true accountability.
 
-Cultural Uncertainty (Verification Required): The organization's response to human error (e.g., clicking a phishing link) is unknown. If a ""Blame Culture"" exists (punishing mistakes), employees will hide incidents. If a ""Just Culture"" exists (encouraging reporting), resilience improves. We currently do not know which culture AnsamcAL has.",3,Tier 3: Repeatable,"To move to Level 2 (Risk Informed), you must first ""Audit the Bosses"" to establish the baseline.
+Cultural Uncertainty (Verification Required): The organization's response to human error (e.g., clicking a phishing link) is unknown. If a ""Blame Culture"" exists (punishing mistakes), employees will hide incidents. If a ""Just Culture"" exists (encouraging reporting), resilience improves. We currently do not know which culture AnsamcAL has.",3,Tier 3: Repeatable,"To move to Tier 2: Risk Informed, you must first ""Audit the Bosses"" to establish the baseline.
 
 Phase 1: The ""VIP Configuration"" Audit (Technical Verification)
 
@@ -2047,7 +2047,7 @@ Legal/HR Alignment (Strong): By embedding ""Secure Development"" into Job Descri
 
 Operational Empowerment (Strong): The SOC's Authority to block IPs and create rules during an incident is a critical capability. It solves the ""Permission Bottleneck"" that plagues many companies, allowing the team to stop attacks in real-time without waking up executives for approval.
 
-Checks and Balances (Strong): The confirmed Segregation of Duties ensures that the ""Builders"" (IT Ops) and the ""Checkers"" (Security) are distinct, preventing conflicts of interest and reducing the risk of insider threats.",3,Tier 3: Repeatable,"To move to Level 4 (Measured), you must ensure these defined roles remain effective when people leave or when pressure increases.
+Checks and Balances (Strong): The confirmed Segregation of Duties ensures that the ""Builders"" (IT Ops) and the ""Checkers"" (Security) are distinct, preventing conflicts of interest and reducing the risk of insider threats.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive, you must ensure these defined roles remain effective when people leave or when pressure increases.
 
 Phase 1: The ""Key Person"" Stress Test (Succession)
 
@@ -2118,7 +2118,7 @@ Active Technical Stack (Strong): The presence of active SIEM and Vulnerability M
 
 Budget Governance Gap (Verification Required): While the outcome is good (tools are bought, people are paid), the mechanism (Budget Strategy) is opaque. We do not know if the security budget is a fixed percentage or ad-hoc. Without a defined budget model, the program acts on ""luck"" rather than ""strategy."" PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Cost-Risk Transparency (Verification Required): It is unknown if denied budget requests are tracked as ""Accepted Risks."" If the CFO denies a request for a Firewall upgrade, that decision should be recorded as a risk, not just a rejected expense.",3,Tier 3: Repeatable,"To move to Level 4), you must prove that your resources can scale dynamically with the business.
+Cost-Risk Transparency (Verification Required): It is unknown if denied budget requests are tracked as ""Accepted Risks."" If the CFO denies a request for a Firewall upgrade, that decision should be recorded as a risk, not just a rejected expense.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive), you must prove that your resources can scale dynamically with the business.
 
 Phase 1: The ""Budget Floor"" Definition
 
@@ -2201,7 +2201,7 @@ Mandatory Vetting (Joiners): The confirmation of Mandatory Background Checks ens
 
 Legal Readiness: The availability of signed NDAs and Policy Acknowledgments indicates good document hygiene. In the event of a legal dispute with an employee, the organization can produce the necessary evidence.
 
-Offboarding Speed (Human-Dependent): While described as ""pretty fast"" and ""coordinated,"" the process appears to rely on human coordination rather than automated API triggers (e.g., HRIS automatically disabling AD). While effective, this creates a slight risk of human latency during complex terminations.",3,Tier 3: Repeatable,"To move to Level 4 (Measured/Automated), you must remove the ""Human Element"" from the termination process.
+Offboarding Speed (Human-Dependent): While described as ""pretty fast"" and ""coordinated,"" the process appears to rely on human coordination rather than automated API triggers (e.g., HRIS automatically disabling AD). While effective, this creates a slight risk of human latency during complex terminations.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive, you must remove the ""Human Element"" from the termination process.
 
 Phase 1: Automate the ""Kill Switch"" (Integration)
 
@@ -2320,7 +2320,7 @@ The Question: ""If I sit at a random employee's desk right now and search 'Secur
 The Question: ""Does your policy mention specific technologies you actually use (e.g., SCADA, Cloud, Hydro Systems)? Or does it look like a generic template downloaded from the internet that mentions 'Mainframes' and 'Tape Drives' that you don't even have?""
 
 4. Evidence of Enforcement
-The Question: ""Can you cite one example in the last 2 years where an employee was disciplined (warning, retraining, or firing) for violating a security policy? If the answer is 'No,' then your policy is toothless, and employees know they can break the rules safely.""","Defined / Compliant (Tier 3: Repeatable) — with Major Observation
+The Question: ""Can you cite one example in the last 2 years where an employee was disciplined (warning, retraining, or firing) for violating a security policy? If the answer is 'No,' then your policy is toothless, and employees know they can break the rules safely.""","Tier 3: Repeatable (Tier 3: Repeatable) — with Major Observation
 
 PCDS assesses the organization at Tier 3: Repeatable. The existence of a CEO-signed, customized policy that is actively enforced places AnsamcAL well ahead of organizations that treat policy as ""shelfware."" The fact that disciplinary actions have occurred proves the policy has real-world weight.
 
@@ -2457,7 +2457,7 @@ Effective Communication (Strong): Providing a ""Summary of Changes"" via email a
 
 Document Hygiene (Strong): The presence of Version Numbers ensures audit trails are preserved and prevents employees from referencing obsolete rules.
 
-Regulatory Alignment Gap (Verification Required): It is currently unconfirmed if the policy explicitly references the Trinidad and Tobago Data Protection Act (2011) or other Caribbean privacy frameworks. Without this specific legal mapping, the policy might be ""Technically Secure"" but ""Legally Non-Compliant."" PCDS marks this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Level 4 (Measured), you must ensure your policy serves as a legal shield as well as a technical rulebook.
+Regulatory Alignment Gap (Verification Required): It is currently unconfirmed if the policy explicitly references the Trinidad and Tobago Data Protection Act (2011) or other Caribbean privacy frameworks. Without this specific legal mapping, the policy might be ""Technically Secure"" but ""Legally Non-Compliant."" PCDS marks this as an ""Open Item"" for AnsamcAL management validation.",2,Tier 2: Risk Informed,"To move to Tier 4: Adaptive, you must ensure your policy serves as a legal shield as well as a technical rulebook.
 
 Phase 1: The ""Caribbean Legal Mapping"" (Immediate)
 
@@ -2627,7 +2627,7 @@ Critical Scope Gap (Cloud/SaaS): The confirmation that the strategy does not cov
 
 Effective Feedback Loop (Strong): The confirmation that Audit Findings trigger strategic changes is a positive governance trait. It proves that the organization is willing to listen to external experts and adjust course.
 
-Unverified Expansion Risks: The lack of clarity regarding M&A (Mergers & Acquisitions) and Regulatory mapping creates ""Shadow Risk."" If AnsamcAL has acquired other entities that are not following the main strategy, or if the strategy ignores the T&T Data Protection Act, legal liability remains high. PCDS notes these as ""Open Items"" for verification.",2,Tier 2: Risk Informed,"To move to Level 3 (), you must modernize the scope of your strategy.
+Unverified Expansion Risks: The lack of clarity regarding M&A (Mergers & Acquisitions) and Regulatory mapping creates ""Shadow Risk."" If AnsamcAL has acquired other entities that are not following the main strategy, or if the strategy ignores the T&T Data Protection Act, legal liability remains high. PCDS notes these as ""Open Items"" for verification.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable (), you must modernize the scope of your strategy.
 
 Phase 1: The ""Shared Responsibility"" Update (Cloud Strategy)
 
@@ -2784,7 +2784,7 @@ Lack of Prioritization (Efficiency Gap): The absence of Vendor Tiering means the
 
 Legal Exposure (Contractual Gap): The lack of Standard Security Clauses is dangerous. If a vendor suffers a data breach involving AnsamcAL data today, you likely have no legal right to force them to report it, investigate it, or pay for the damages. You are at the mercy of their contract terms.
 
-Ownership Vacuum: Without a defined Program Owner, supply chain risk falls into the cracks between Legal, Procurement, and IT.",2,Tier 2: Risk Informed,"To move to Level 2 , you must immediately stop the ""unfiltered"" intake of new vendors.
+Ownership Vacuum: Without a defined Program Owner, supply chain risk falls into the cracks between Legal, Procurement, and IT.",2,Tier 2: Risk Informed,"To move to Tier 2: Risk Informed , you must immediately stop the ""unfiltered"" intake of new vendors.
 
 Phase 1: The ""Red Light"" Policy (Procurement Gate)
 
@@ -2879,7 +2879,7 @@ Customer Awareness (Strong): Documenting Customer Obligations in contracts prote
 
 Operational Blind Spots (Verification Required): We do not know if there is a direct line of communication to Vendor Security Teams. If AnsamcAL only has a generic ""Support Portal"" login, response times during a supply chain attack (like the Kaseya or SolarWinds incidents) will be dangerously slow. PCDS notes this as a critical ""Open Item.""
 
-Internal Coordination Gaps (Verification Required): We do not know if Procurement coordinates with Security during contract termination. This creates a risk of ""Data Remanence""—where AnsamcAL's data is left on a vendor's server forever because nobody formally asked for it back.",2,Tier 2: Risk Informed,"To move to Level 4 (Measured), you must turn the paper contracts into active relationships.
+Internal Coordination Gaps (Verification Required): We do not know if Procurement coordinates with Security during contract termination. This creates a risk of ""Data Remanence""—where AnsamcAL's data is left on a vendor's server forever because nobody formally asked for it back.",2,Tier 2: Risk Informed,"To move to Tier 4: Adaptive, you must turn the paper contracts into active relationships.
 
 Phase 1: The ""Emergency Contact"" Drill (Operational)
 
@@ -2982,7 +2982,7 @@ Reactive Posture (Critical Gap): The admission that there is no process for glob
 
 Project Blindness: New projects are launched without assessing supply chain security. This means every new initiative potentially introduces new, unvetted vendors into the network, compounding the ""Shadow IT"" problem.
 
-Ad-Hoc Monitoring: Reviews are sporadic. This ""set it and forget it"" approach ignores the reality that a vendor who was secure in 2020 might be compromised in 2025.",2,Tier 2: Risk Informed,"To move to Level 2 (Risk Informed), you must manually bridge the gap between ""IT"" and ""The Business.""
+Ad-Hoc Monitoring: Reviews are sporadic. This ""set it and forget it"" approach ignores the reality that a vendor who was secure in 2020 might be compromised in 2025.",2,Tier 2: Risk Informed,"To move to Tier 2: Risk Informed, you must manually bridge the gap between ""IT"" and ""The Business.""
 
 Phase 1: The ""Placeholder"" Risk Entry (Immediate)
 
@@ -3066,7 +3066,7 @@ Undefined Criticality: Without a definition for ""Critical,"" the organization l
 
 Shadow IT Exposure: The absence of ""Shadow SaaS"" discovery means employees are almost certainly using unauthorized cloud tools (Dropbox, PDF converters, AI tools) that IT knows nothing about.
 
-Blindness to Concentration Risk: You do not know if you have a ""Single Point of Failure."" If 80% of your software runs on Amazon Web Services (AWS) and AWS has an outage, your business stops, but you haven't mapped this dependency.",2,Tier 2: Risk Informed,"To move to Level 2 (Risk Informed), you must build the ""Census"" of your digital inhabitants.
+Blindness to Concentration Risk: You do not know if you have a ""Single Point of Failure."" If 80% of your software runs on Amazon Web Services (AWS) and AWS has an outage, your business stops, but you haven't mapped this dependency.",2,Tier 2: Risk Informed,"To move to Tier 2: Risk Informed, you must build the ""Census"" of your digital inhabitants.
 
 Phase 1: The ""Finance Filter"" (The Quick Inventory)
 
@@ -3177,7 +3177,7 @@ Data Return: The ""Certificate of Destruction"" clause solves the ""Data Remanen
 
 Hybrid Infrastructure Control: The mention of ""Colocation and Owned Data Centers"" suggests AnsamcAL retains significant physical control over its infrastructure, which reduces reliance on pure third-party clouds for some critical assets.
 
-The ""Right to Audit"" Gap (Verification Required): It is unconfirmed if AnsamcAL has the legal right to inspect these vendors later. Without this, you can ask for a security report, but you cannot demand access if you suspect they are lying. PCDS notes this as an ""Open Item.""",2,Tier 2: Risk Informed,"To move to Level 4 (Measured), you must connect this ""Legal Strength"" to the ""Operational Weakness"" we found earlier.
+The ""Right to Audit"" Gap (Verification Required): It is unconfirmed if AnsamcAL has the legal right to inspect these vendors later. Without this, you can ask for a security report, but you cannot demand access if you suspect they are lying. PCDS notes this as an ""Open Item.""",2,Tier 2: Risk Informed,"To move to Tier 4: Adaptive, you must connect this ""Legal Strength"" to the ""Operational Weakness"" we found earlier.
 
 Phase 1: The ""Right to Audit"" Amendment
 
@@ -3360,7 +3360,7 @@ Strong Exit Discipline: The confirmation that the Offboarding Checklist is follo
 
 Compliance Drift (Critical Gap): The absence of Annual Re-assessments (due to missing TPRM) means AnsamcAL suffers from ""Compliance Drift."" A vendor that was secure in 2022 might be totally insecure in 2025, but without a re-check process, you are blindly trusting the old data.
 
-Contingency Blindness (Verification Required): It is unknown if AnsamcAL has Business Continuity Plans for vendor failure. If a critical SaaS tool goes offline, the organization might not have a manual workaround ready. PCDS notes this as an ""Open Item.""",2,Tier 2: Risk Informed,"To move to Level 3 (Compliant), you must build the process around the tool you already own.
+Contingency Blindness (Verification Required): It is unknown if AnsamcAL has Business Continuity Plans for vendor failure. If a critical SaaS tool goes offline, the organization might not have a manual workaround ready. PCDS notes this as an ""Open Item.""",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, you must build the process around the tool you already own.
 
 Phase 1: Operationalize BitSight (The ""Alert"" Rule)
 
@@ -3443,7 +3443,7 @@ Playbook Maturity (Strong): The existence of a specific ""Third-Party Breach"" s
 
 Forensic Readiness (Strong): The confirmation of ""Sufficient Logging"" and evidence protocols means that AnsamcAL can actively investigate a breach, rather than being blocked by a vendor's lack of transparency.
 
-Recovery Logic (Strong): Having a coordinated Fail-Back Plan prevents the common error of ""Cascading Failure"" (where systems are turned on in the wrong order, causing a crash).",2,Tier 2: Risk Informed,"To move to Level 4 (Measured), you should leverage this operational strength to fix the strategic gaps we found earlier.
+Recovery Logic (Strong): Having a coordinated Fail-Back Plan prevents the common error of ""Cascading Failure"" (where systems are turned on in the wrong order, causing a crash).",2,Tier 2: Risk Informed,"To move to Tier 4: Adaptive, you should leverage this operational strength to fix the strategic gaps we found earlier.
 
 Phase 1: ""Reverse Engineer"" the Inventory
 
@@ -3521,7 +3521,7 @@ The ""Zombie Asset"" Problem: While an End-of-Life (EOL) Tracker exists (a posit
 
 Missing Performance Metrics: Because TPRM is not fully established, AnsamcAL cannot measure if a vendor is getting better or worse over time (e.g., ""Time to Patch""). You are flying without an instrument panel.
 
-M&A Blindness (Verification Required): It is likely that AnsamcAL misses the risks introduced when a vendor gets acquired. (e.g., When Broadcom bought VMWare, support models changed overnight). PCDS notes this as an ""Open Item"" to verify if Legal alerts IT about vendor ownership changes.",2,Tier 2: Risk Informed,"To move to Level 3 (Compliant), you must move from ""Tracking"" to ""Acting.""
+M&A Blindness (Verification Required): It is likely that AnsamcAL misses the risks introduced when a vendor gets acquired. (e.g., When Broadcom bought VMWare, support models changed overnight). PCDS notes this as an ""Open Item"" to verify if Legal alerts IT about vendor ownership changes.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable, you must move from ""Tracking"" to ""Acting.""
 
 Phase 1: The ""Kill Date"" Policy (EOL Management)
 
@@ -3657,9 +3657,9 @@ Devices such as Core Infrastructure, User Endpoints:Mobile Devices, OT & ICS (Op
 Discovery & Blind Spots:
 Automation & Freshness:
 Contextual Depth:
-Lifecycle Reconciliation:",,3,Tier 3: Repeatable,"To mature this control from a partial ""Endpoint list"" to a true ""Organizational Inventory"" (Level 2/3), the following steps are recommended:
+Lifecycle Reconciliation:",,3,Tier 3: Repeatable,"To mature this control from a partial ""Endpoint list"" to a true ""Organizational Inventory"" (Tier 2/Tier 3), the following steps are recommended:
 
-Phase 1: Manual Consolidation (Immediate - Level 2)
+Phase 1: Manual Consolidation (Immediate - Tier 2: Risk Informed)
 
 Action: Create a Static Network Register. Since you likely have a limited number of core network devices (Firewalls, Switches), OT / IOT Devices/ Routers, manually document them in a central register.
 
@@ -4454,7 +4454,7 @@ Phase 3: Centralized Remediation (Tooling)
 
 Action: Move the ""Action Item Spreadsheet"" into a shared ticketing system (Jira/ServiceNow/Asana) tagged as ""Security_Remediation.""
 
-Why: This allows you to measure SLAs (e.g., ""Average time to fix Criticals"") which is a requirement for Level 4.",Tier 4: Adaptive,4,,
+Why: This allows you to measure SLAs (e.g., ""Average time to fix Criticals"") which is a requirement for Tier 4: Adaptive.",Tier 4: Adaptive,4,,
 Identify,ID,ID.IM,Improvement,ID.IM-03,"Improvements are identified from execution of operational processes, procedures, and activities
 
 This control establishes a continuous feedback loop derived from the organization’s daily ""Business as Usual"" (BAU) operations. Unlike audits or penetration tests which are periodic events, this control requires the organization to capture lessons learned from the ongoing execution of standard operating procedures (SOPs), service delivery, and routine administration.
@@ -4510,7 +4510,7 @@ Trigger-Based Maintenance:
 
 Operational Scope (Beyond IT):
 
-""Does the plan explicitly list decision trees for business operations, not just technical fixes? (e.g., Who has the authority to shut down the manufacturing plant to stop a virus spread? Who drafts the legal breach notification?)""",,3,Tier 3: Repeatable,"To fix the ""Stagnation"" and reach Level 3 (Managed), PCDS recommends:
+""Does the plan explicitly list decision trees for business operations, not just technical fixes? (e.g., Who has the authority to shut down the manufacturing plant to stop a virus spread? Who drafts the legal breach notification?)""",,3,Tier 3: Repeatable,"To fix the ""Stagnation"" and reach Tier 3: Repeatable, PCDS recommends:
 
 Phase 1: The ""Reality Check"" (Immediate)
 
@@ -4619,7 +4619,7 @@ Prohibition of Shared Accounts: The organization strictly enforces individual ac
 
 Service Account Hygiene: Unlike many organizations that leave Service Accounts stagnant, AnsamcAL performs rotation and management of these credentials, reducing the risk of a ""Golden Ticket"" attack using old privileged credentials.
 
-Missing Device Identity (The Gap): The primary deficiency is the lack of Hardware Authentication (e.g., MAC Binding, 802.1x, or Device Certificates). Currently, the network validates who the user is, but not what device they are using. This means a valid user could potentially connect a personal, unsecure laptop (BYOD) to the corporate network and gain full access, bypassing endpoint controls like EDR/USB blocking.",3,Tier 3: Repeatable,"To move to Level 3 (Managed), you must establish ""Device Trust.""
+Missing Device Identity (The Gap): The primary deficiency is the lack of Hardware Authentication (e.g., MAC Binding, 802.1x, or Device Certificates). Currently, the network validates who the user is, but not what device they are using. This means a valid user could potentially connect a personal, unsecure laptop (BYOD) to the corporate network and gain full access, bypassing endpoint controls like EDR/USB blocking.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, you must establish ""Device Trust.""
 
 Phase 1: Implement ""Device Identity"" (NAC lite)
 
@@ -4696,7 +4696,7 @@ Governance of Access: There is a formal process for reviewing access lists. The 
 
 Termination Protocol: A defined process exists to revoke physical access on the ""last working day."" While effective for standard departures, this manual synchronization with the employee's exit date leaves a small window of risk compared to real-time revocation.
 
-Key Management Blind Spot: The primary gap is the lack of information regarding Physical Master Keys. While electronic badges are tracked, physical keys (which override badges) are unaccounted for. If a master key is lost or held by a former employee, the electronic logs become irrelevant because the lock can be bypassed without generating a log entry.",3,Tier 3: Repeatable,"To move to Level 3 (Managed), you must close the ""Physical Override"" gap.
+Key Management Blind Spot: The primary gap is the lack of information regarding Physical Master Keys. While electronic badges are tracked, physical keys (which override badges) are unaccounted for. If a master key is lost or held by a former employee, the electronic logs become irrelevant because the lock can be bypassed without generating a log entry.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, you must close the ""Physical Override"" gap.
 
 Phase 1: The ""Key Audit"" (Immediate)
 
@@ -4791,7 +4791,7 @@ Resilience Against MFA Fatigue: The decision to use Authenticator-based (TOTP) v
 
 Attack Surface Reduction: By confirming that Legacy Protocols (POP3/IMAP) are disabled, the organization has closed the most common loophole used by password sprayers to bypass MFA.
 
-Encryption of Credentials: The organization ensures that authentication traffic and stored secrets are not exposed in plain text, adhering to modern cryptographic standards for identity data in transit and at rest.",3,Tier 3: Repeatable,"To move from Level 3 (Managed) to Level 4 (Adaptive), the focus shifts to Resilience and Phishing Resistance.
+Encryption of Credentials: The organization ensures that authentication traffic and stored secrets are not exposed in plain text, adhering to modern cryptographic standards for identity data in transit and at rest.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the focus shifts to Resilience and Phishing Resistance.
 
 Phase 1: The ""Break Glass"" Protocol (Resilience)
 
@@ -4867,7 +4867,7 @@ Cryptographic Hygiene (Key Rotation): The organization actively manages the ""Ke
 
 Defined Session Lifecycles: A formal Time-to-Live (TTL) policy is in place (24 hours). This limits the ""window of opportunity"" for an attacker using a stolen token. However, a 24-hour window is relatively generous compared to strict zero-trust standards.
 
-Protocol Standards: The adherence to TLS 1.2+ ensures that legacy vulnerabilities (like POODLE or BEAST found in SSL/TLS 1.0) cannot be exploited to decrypt identity assertions.",3,Tier 3: Repeatable,"To move from Level 3 to Level 4 (Optimized), you should tighten the ""Session Window"" and implement ""Real-Time"" revocation.
+Protocol Standards: The adherence to TLS 1.2+ ensures that legacy vulnerabilities (like POODLE or BEAST found in SSL/TLS 1.0) cannot be exploited to decrypt identity assertions.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, you should tighten the ""Session Window"" and implement ""Real-Time"" revocation.
 
 Phase 1: Tighten the TTL (Risk Reduction)
 
@@ -5128,7 +5128,7 @@ Active Validation (Phishing Simulations): The organization does not rely solely 
 
 Modern Threat Relevance: The training content is not static. By explicitly including modules on ""Use of AI Tools"" (e.g., ChatGPT/LLM risks), the organization demonstrates agility in addressing emerging threats that traditional curriculums often miss.
 
-Audit Readiness:",3,Tier 3: Repeatable,"To move from Level 3 (Managed) to Level 4 (Optimized), the goal is to shift from ""Quarterly Compliance"" to ""Continuous Behavior Modification.""
+Audit Readiness:",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to shift from ""Quarterly Compliance"" to ""Continuous Behavior Modification.""
 
 Phase 1: Increase Simulation Frequency (Monthly)
 
@@ -5510,7 +5510,7 @@ The Question: ""If I manually log into a server today and enable an insecure ser
 The Question: ""Do you have an Authorized Software List (Allowlisting)? Can a user install 'Spotify' or 'uTorrent' on their work laptop if they want to? Or is installation blocked unless the software is pre-approved in your configuration profile?""
 
 4. Network Device Configs
-The Question: ""We talk a lot about servers, but what about your Firewalls and Switches? Do you back up their configuration files daily? If a switch fails tonight, can you restore its exact VLAN configuration in 10 minutes, or does someone have to rebuild the config from memory?""","Partially Compliant / Managed 
+The Question: ""We talk a lot about servers, but what about your Firewalls and Switches? Do you back up their configuration files daily? If a switch fails tonight, can you restore its exact VLAN configuration in 10 minutes, or does someone have to rebuild the config from memory?""","Partially Compliant / Risk Informed 
 
 PCDS assesses the organization at Tier 2: Risk Informed. While specific domains (Network & Endpoints) show maturity, the lack of confirmation regarding Server Hardening represents a significant potential gap in the attack surface.
 
@@ -5530,9 +5530,9 @@ Action: Verify the server status with the AnsamcAL technical team.
 
 Task: Run a simple audit script (or use a tool like Nessus/OpenSCAP) on a sample of 5 Production Servers.
 
-Metric: ""Percentage of Pass"" against CIS Level 1 profile.
+Metric: ""Percentage of Pass"" against CIS Tier 1: Partial profile.
 
-Goal: If they are not hardened, apply the CIS Level 1 policies immediately via Group Policy (GPO) or Ansible. This is low-hanging fruit for security improvement.
+Goal: If they are not hardened, apply the CIS Tier 1: Partial policies immediately via Group Policy (GPO) or Ansible. This is low-hanging fruit for security improvement.
 
 Phase 2: Auto-Remediation (From ""Detect"" to ""Correct"")
 
@@ -5614,7 +5614,7 @@ Attack Surface Reduction: The policy of ""wiping clean"" new hardware ensures th
 
 Adherence to SLAs: A formal Service Level Agreement (SLA) exists for patching, and adherence is generally strong (""mostly adhered to""). This moves patching from a ""best effort"" task to a measurable performance metric.
 
-Legacy System Risk (The Open Wound): The organization acknowledges the presence of End-of-Life (EOL) systems that cannot be patched or migrated due to business constraints. While the business reason is valid, from a security perspective, these systems act as ""sitting ducks"" for attackers. Since they cannot be patched, they rely entirely on external defenses.",2,Tier 2: Risk Informed,"To maintain Level 3 and mitigate the specific risks of the EOL systems, you must implement ""Compensatory Controls."" (If you can't fix the host, you must fix the network around it).
+Legacy System Risk (The Open Wound): The organization acknowledges the presence of End-of-Life (EOL) systems that cannot be patched or migrated due to business constraints. While the business reason is valid, from a security perspective, these systems act as ""sitting ducks"" for attackers. Since they cannot be patched, they rely entirely on external defenses.",2,Tier 2: Risk Informed,"To maintain Tier 3: Repeatable and mitigate the specific risks of the EOL systems, you must implement ""Compensatory Controls."" (If you can't fix the host, you must fix the network around it).
 
 Phase 1: ""Jail"" the Legacy Systems (Segmentation)
 
@@ -5752,7 +5752,7 @@ Centralized Aggregation: Logs are not siloed; they are shipped to a dedicated in
 
 Forensic Readiness: The combination of NTP Synchronization and advanced PowerShell/Script Logging ensures that the logs contain sufficient detail and accurate timelines to reconstruct complex attack scenarios.
 
-Active Monitoring: The system utilizes the ""Active"" (90-day) window effectively by generating notifications via the SIEM, ensuring that the logs are being reviewed in near-real-time rather than just being hoarded.",3,Tier 3: Repeatable,"To move from Level 3 to Level 4 (Optimized), the focus shifts from ""Storing"" the logs to ""Protecting"" and ""Using"" them more intelligently.
+Active Monitoring: The system utilizes the ""Active"" (90-day) window effectively by generating notifications via the SIEM, ensuring that the logs are being reviewed in near-real-time rather than just being hoarded.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the focus shifts from ""Storing"" the logs to ""Protecting"" and ""Using"" them more intelligently.
 
 Phase 1: Log Integrity Validation (FIM)
 
@@ -5835,7 +5835,7 @@ Privilege Reduction (The ""Silver Bullet""): By removing Local Admin rights, the
 
 Execution Defense (Heuristic vs. Deterministic): The organization currently relies on Runtime Analysis (Sophos/Defender checking for viruses). This is a ""Negative Security Model"" (Allow everything, block the bad). While effective against known threats, it is theoretically less secure than a ""Positive Security Model"" (Block everything, allow only the good).
 
-Attack Surface Reduction: The restriction of PowerShell and the blocking of Removable Media (USB) effectively closes the two most common ""side-doors"" for malware entry and execution.",3,Tier 3: Repeatable,"To move from Level 3 to Level 4 (Optimized), the goal is to shift from ""Scanning for Viruses"" to ""Trusting only Approved Apps.""
+Attack Surface Reduction: The restriction of PowerShell and the blocking of Removable Media (USB) effectively closes the two most common ""side-doors"" for malware entry and execution.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to shift from ""Scanning for Viruses"" to ""Trusting only Approved Apps.""
 
 Phase 1: Attack Surface Reduction (ASR) Rules
 
@@ -5989,7 +5989,7 @@ IoT & Guest Isolation: The organization follows best practices by quarantining "
 
 The ""Physical Port"" Gap (Verification Required): A critical uncertainty exists regarding Network Access Control (NAC). It is currently unconfirmed if plugging a rogue device into a physical wall jack results in immediate network access or a block. PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Risk: Without NAC, a physical intruder (or a rogue employee) can bypass the firewall simply by plugging into a conference room or empty desk port.",2,Tier 2: Risk Informed,"To move to Level 3 (Compliant) and eventually Level 4, you must close the physical loop and deepen the logical segmentation.
+Risk: Without NAC, a physical intruder (or a rogue employee) can bypass the firewall simply by plugging into a conference room or empty desk port.",2,Tier 2: Risk Informed,"To move to Tier 3: Repeatable and eventually Tier 4: Adaptive, you must close the physical loop and deepen the logical segmentation.
 
 Phase 1: The ""NAC"" Audit (Immediate)
 
@@ -6188,7 +6188,7 @@ The ""Queue"" Risk (Critical Gap): The absence of a Retainer (Input 1) is a sign
 
 Operational Discipline (Strong): The fact that Authorized Caller lists are updated (Input 2) and External Drills are conducted (Input 4) places AnsamcAL ahead of many peers. It proves that the team is operationally serious and isn't just relying on stale documentation.
 
-Regulatory Readiness (Strong): Having specific Law Enforcement contacts defined (Input 3) ensures that if a crime occurs, the reporting process will be smooth, preserving the chain of custody.",3,Tier 3: Repeatable,"To move to Level 3 (Compliant), you must fix the ""Contractual Gap.""
+Regulatory Readiness (Strong): Having specific Law Enforcement contacts defined (Input 3) ensures that if a crime occurs, the reporting process will be smooth, preserving the chain of custody.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, you must fix the ""Contractual Gap.""
 
 Phase 1: The  Retainer agreement
 
@@ -6334,7 +6334,7 @@ Risk-Based Logic (Compliant): Calculating criticality based on ""Possible Loss""
 
 Operational Guidance (Strong): The existence of Playbooks linked to Alert Types (Input 3) is the most valuable operational component. It turns a ""policy"" into a ""procedure"" that junior staff can follow.
 
-Dynamic Agility (Compliant): The ability to ""Course Correct"" prioritization mid-incident (Input 4) shows that the process is flexible enough to handle the chaos of real-world scenarios.",3,Tier 3: Repeatable,"To move to Level 4 (Measured), you must reduce the ""Subjectivity"" of the calculation and use the data for strategic planning.
+Dynamic Agility (Compliant): The ability to ""Course Correct"" prioritization mid-incident (Input 4) shows that the process is flexible enough to handle the chaos of real-world scenarios.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive, you must reduce the ""Subjectivity"" of the calculation and use the data for strategic planning.
 
 Phase 1: Automate the ""Asset Value"" Input
 
@@ -6870,7 +6870,7 @@ Procedural Clarity (Strong): Having clear steps for the IT team (Input 1) ensure
 
 Effective Segmentation (Compliant): The claim that containment strategies have been effective (Input 4) implies that your network architecture (VLANs/Firewalls) supports isolation, rather than being a flat network where malware spreads instantly.
 
-Identity Awareness (Compliant): Acknowledging the process for identity alerts (Input 2) suggests the team understands that containment isn't just about ""shutting down servers,"" but also about ""locking out users.""",3,Tier 3: Repeatable,"To move to Level 4 (Managed/Automated), you must reduce the ""Human Latency"" in the containment phase.
+Identity Awareness (Compliant): Acknowledging the process for identity alerts (Input 2) suggests the team understands that containment isn't just about ""shutting down servers,"" but also about ""locking out users.""",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive, you must reduce the ""Human Latency"" in the containment phase.
 
 Phase 1: Pre-Authorized ""Kill Switch""
 

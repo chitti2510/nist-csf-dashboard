@@ -7,7 +7,7 @@ export interface SubCategory {
   implementationExamples: string;
   informativeReferences: string;
   controlsChecks: string;
-  descriptionOfControls: string;
+  understandingOfControls: string;
   currentTierScore: number;
   currentTier: string;
   recommendation: string;
@@ -69,7 +69,7 @@ export function useData() {
             implementationExamples: r['implementation_examples'],
             informativeReferences: r['informative_references'],
             controlsChecks: r['controls_checks'],
-            descriptionOfControls: r['description_of_controls'],
+            understandingOfControls: r['Understanding_of_controls_Implemented'],
             currentTierScore: parseFloat(r['current_tier_score']) || 0,
             currentTier: r['current_tier'],
             recommendation: r['recommendation'],
