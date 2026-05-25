@@ -1,5 +1,4 @@
 import { Shield } from 'lucide-react';
-import UserMenu from './UserMenu';
 
 export default function Header() {
   return (
@@ -9,15 +8,16 @@ export default function Header() {
           <Shield className="w-5 h-5 text-indigo-400" />
         </div>
         <div className="min-w-0">
-          <h1 className="text-lg font-semibold text-white leading-tight">NIST CSF 2.0 Assessment Dashboard</h1>
-          <p className="text-xs text-slate-400">Cybersecurity Framework Implementation Review</p>
+          <h1 className="text-lg font-semibold text-white leading-tight">
+            NIST CSF Implementation Tier Dashboard
+          </h1>
+          <p className="text-xs text-slate-400">Cybersecurity Framework 2.0 · Implementation Tier Assessment</p>
         </div>
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex-shrink-0">
           <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
             Live Assessment
           </span>
-          <UserMenu />
         </div>
       </div>
     </header>

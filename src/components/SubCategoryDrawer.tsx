@@ -1,6 +1,6 @@
 import { X, FileText, Eye, Wrench, Code2, ShieldCheck, Target, MessageSquare } from 'lucide-react';
 import type { SubCategory } from '../hooks/useData';
-import { getTierBgColor, getTierColor } from '../utils/tierUtils';
+import { TIER_COLORS, TIER_BG_CLASSES, getTierKey } from '../utils/tierUtils';
 
 interface Props {
   sub: SubCategory;
@@ -15,10 +15,9 @@ interface SectionConfig {
   bgColor: string;
   iconColor: string;
   labelColor: string;
-  textColor: string;
 }
 
-function SectionCard({ icon: Icon, title, content, borderColor, bgColor, iconColor, labelColor, textColor }: SectionConfig) {
+function SectionCard({ icon: Icon, title, content, borderColor, bgColor, iconColor, labelColor }: SectionConfig) {
   if (!content?.trim()) return null;
   return (
     <div className={`rounded-xl border p-4 ${borderColor} ${bgColor}`}>
@@ -28,13 +27,15 @@ function SectionCard({ icon: Icon, title, content, borderColor, bgColor, iconCol
         </div>
         <h4 className={`text-xs font-semibold uppercase tracking-widest ${labelColor}`}>{title}</h4>
       </div>
-      <p className={`text-sm leading-relaxed whitespace-pre-wrap ${textColor}`}>{content}</p>
+      <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-wrap">{content}</p>
     </div>
   );
 }
 
 export default function SubCategoryDrawer({ sub, onClose }: Props) {
-  const gap = sub.targetTierScore - sub.currentTierScore;
+  const currentKey = getTierKey(sub.currentTierScore);
+  const targetKey  = getTierKey(sub.targetTierScore);
+  const meetsTarget = !sub.isBelowTarget;
 
   const sections: SectionConfig[] = [
     {
@@ -45,7 +46,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-slate-800/50',
       iconColor: 'text-slate-400',
       labelColor: 'text-slate-400',
-      textColor: 'text-slate-300',
     },
     {
       icon: Eye,
@@ -55,7 +55,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-blue-500/[0.07]',
       iconColor: 'text-blue-400',
       labelColor: 'text-blue-300',
-      textColor: 'text-slate-300',
     },
     {
       icon: Wrench,
@@ -65,7 +64,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-emerald-500/[0.07]',
       iconColor: 'text-emerald-400',
       labelColor: 'text-emerald-300',
-      textColor: 'text-slate-300',
     },
     {
       icon: Code2,
@@ -75,7 +73,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-indigo-500/[0.07]',
       iconColor: 'text-indigo-400',
       labelColor: 'text-indigo-300',
-      textColor: 'text-slate-300',
     },
     {
       icon: ShieldCheck,
@@ -85,7 +82,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-purple-500/[0.07]',
       iconColor: 'text-purple-400',
       labelColor: 'text-purple-300',
-      textColor: 'text-slate-300',
     },
     {
       icon: Target,
@@ -95,7 +91,6 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-amber-500/[0.07]',
       iconColor: 'text-amber-400',
       labelColor: 'text-amber-300',
-      textColor: 'text-slate-300',
     },
     {
       icon: MessageSquare,
@@ -105,72 +100,84 @@ export default function SubCategoryDrawer({ sub, onClose }: Props) {
       bgColor: 'bg-yellow-500/[0.07]',
       iconColor: 'text-yellow-400',
       labelColor: 'text-yellow-300',
-      textColor: 'text-slate-300',
     },
   ];
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end" onClick={onClose}>
-      {/* Backdrop */}
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
       <div
         className="relative w-full max-w-2xl bg-[#0d1117] border-l border-slate-800 h-full flex flex-col shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
-        {/* Sticky header */}
+        {/* ── Sticky header ── */}
         <div className="flex-shrink-0 bg-[#0d1117]/95 backdrop-blur border-b border-slate-800 px-5 pt-5 pb-4">
-          <div className="flex items-start justify-between gap-4">
+
+          {/* Subcategory code + title */}
+          <div className="flex items-start justify-between gap-4 mb-4">
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/25 px-2 py-0.5 rounded">
-                  {sub.code}
-                </span>
-              </div>
+              <span className="inline-block text-xs font-mono text-indigo-400 bg-indigo-500/10 border border-indigo-500/25 px-2 py-0.5 rounded mb-2">
+                {sub.code}
+              </span>
               <h3 className="text-sm font-semibold text-white leading-snug">
                 {sub.description?.split('\n')[0]}
               </h3>
             </div>
             <button
               onClick={onClose}
-              className="flex-shrink-0 p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors mt-0.5"
+              className="flex-shrink-0 p-1.5 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
-          {/* Tier score row */}
-          <div className="flex items-stretch gap-3 mt-4">
-            <div className={`flex-1 rounded-lg border p-3 ${getTierBgColor(sub.currentTierScore)}`}>
-              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-0.5">Current</p>
-              <p className="font-bold text-xl leading-none" style={{ color: getTierColor(sub.currentTierScore) }}>
-                {sub.currentTierScore}.0
+          {/* Implementation Tier row — names as headline, no numeric scores */}
+          <div className="grid grid-cols-[1fr_auto_1fr] items-stretch gap-3">
+
+            {/* Current Implementation Tier */}
+            <div className={`rounded-lg border p-3 ${TIER_BG_CLASSES[currentKey]}`}>
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Current Implementation Tier
               </p>
-              <p className="text-[11px] text-slate-400 mt-1 leading-tight">{sub.currentTier}</p>
+              <p
+                className="text-base font-bold leading-tight"
+                style={{ color: TIER_COLORS[currentKey] }}
+              >
+                {sub.currentImplementationTier}
+              </p>
             </div>
 
-            <div className="flex items-center justify-center px-1">
-              <div className={`text-[11px] font-semibold px-2.5 py-1 rounded-full whitespace-nowrap
-                ${gap > 0
-                  ? 'text-amber-400 bg-amber-500/10 border border-amber-500/25'
-                  : 'text-green-400 bg-green-500/10 border border-green-500/25'
+            {/* Implementation status — no gap arithmetic */}
+            <div className="flex items-center justify-center">
+              <span className={`text-[11px] font-semibold px-3 py-1.5 rounded-full whitespace-nowrap border
+                ${meetsTarget
+                  ? 'text-indigo-300 bg-indigo-500/10 border-indigo-500/25'
+                  : 'text-amber-300 bg-amber-500/10 border-amber-500/25'
                 }`}>
-                {gap > 0 ? `▲ +${gap} gap` : '✓ On target'}
-              </div>
+                {meetsTarget ? '✓ Meets Target Tier' : '▷ Below Target Tier'}
+              </span>
             </div>
 
-            <div className="flex-1 rounded-lg border border-cyan-500/25 bg-cyan-500/[0.07] p-3">
-              <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider mb-0.5">Target</p>
-              <p className="font-bold text-xl leading-none text-cyan-400">{sub.targetTierScore}.0</p>
-              <p className="text-[11px] text-cyan-300/60 mt-1 leading-tight">{sub.targetTier}</p>
+            {/* Target Implementation Tier */}
+            <div className={`rounded-lg border p-3 ${TIER_BG_CLASSES[targetKey]}`}>
+              <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-1">
+                Target Implementation Tier
+              </p>
+              <p
+                className="text-base font-bold leading-tight"
+                style={{ color: TIER_COLORS[targetKey] }}
+              >
+                {sub.targetImplementationTier}
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Scrollable body */}
-        <div className="flex-1 overflow-y-auto max-h-[85vh]">
+        {/* ── Scrollable body ── */}
+        <div className="flex-1 overflow-y-auto">
           <div className="px-5 py-4 space-y-3">
-            {sections.map((s) => (
+            {sections.map(s => (
               <SectionCard key={s.title} {...s} />
             ))}
           </div>

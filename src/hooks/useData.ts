@@ -9,38 +9,60 @@ export interface SubCategory {
   controlsChecks: string;
   understandingOfControls: string;
   currentTierScore: number;
-  currentTier: string;
+  currentImplementationTier: string;
   recommendation: string;
-  targetTier: string;
+  targetImplementationTier: string;
   targetTierScore: number;
   targetTierComments: string;
   clientComments: string;
+  isBelowTarget: boolean;
+}
+
+export interface TierCounts {
+  '1': number;
+  '2': number;
+  '3': number;
+  '4': number;
 }
 
 export interface Category {
   code: string;
   name: string;
   subcategories: SubCategory[];
-  avgCurrentScore: number;
-  avgTargetScore: number;
+  tierCounts: TierCounts;
+  belowTargetCount: number;
 }
 
 export interface FunctionData {
   name: string;
   code: string;
   categories: Category[];
-  avgCurrentScore: number;
-  avgTargetScore: number;
+  tierCounts: TierCounts;
+  belowTargetCount: number;
+  totalSubcategories: number;
 }
 
 export interface DashboardData {
   functions: FunctionData[];
-  radarData: { function: string; current: number; target: number }[];
-  overallAvgCurrent: number;
-  tierCounts: Record<string, number>;
+  overallTierCounts: TierCounts;
+  overallBelowTargetCount: number;
+  totalSubcategories: number;
 }
 
 const FUNCTION_ORDER = ['Govern', 'Identify', 'Protect', 'Detect', 'Respond', 'Recover'];
+
+function emptyTierCounts(): TierCounts {
+  return { '1': 0, '2': 0, '3': 0, '4': 0 };
+}
+
+function addTierCounts(a: TierCounts, b: TierCounts): TierCounts {
+  return {
+    '1': a['1'] + b['1'],
+    '2': a['2'] + b['2'],
+    '3': a['3'] + b['3'],
+    '4': a['4'] + b['4'],
+  };
+}
 
 export function useData() {
   const [data, setData] = useState<DashboardData | null>(null);
@@ -63,6 +85,10 @@ export function useData() {
           if (!fnMap.has(fn)) fnMap.set(fn, new Map());
           const catMap = fnMap.get(fn)!;
           if (!catMap.has(catCode)) catMap.set(catCode, []);
+
+          const currentScore = parseFloat(r['current_tier_score']) || 0;
+          const targetScore  = parseFloat(r['target_tier_score'])  || 0;
+
           catMap.get(catCode)!.push({
             code: r['subcategory_code'],
             description: r['subcategory_description'],
@@ -70,17 +96,18 @@ export function useData() {
             informativeReferences: r['informative_references'],
             controlsChecks: r['controls_checks'],
             understandingOfControls: r['Understanding_of_controls_Implemented'],
-            currentTierScore: parseFloat(r['current_tier_score']) || 0,
-            currentTier: r['current_tier'],
+            currentTierScore: currentScore,
+            currentImplementationTier: r['current_Implementation_tier'],
             recommendation: r['recommendation'],
-            targetTier: r['target_tier'],
-            targetTierScore: parseFloat(r['target_tier_score']) || 0,
+            targetImplementationTier: r['target_Implementation_tier'],
+            targetTierScore: targetScore,
             targetTierComments: r['target_tier_comments'],
             clientComments: r['client_comments'],
+            isBelowTarget: currentScore < targetScore,
           });
         }
 
-        // Build category name lookup
+        // Lookup maps
         const catNameMap = new Map<string, string>();
         for (const r of rows) catNameMap.set(r['category_code'], r['category_name']);
         const fnCodeMap = new Map<string, string>();
@@ -88,33 +115,49 @@ export function useData() {
 
         const functions: FunctionData[] = FUNCTION_ORDER.map(fnName => {
           const catMap = fnMap.get(fnName) ?? new Map();
+
           const categories: Category[] = Array.from(catMap.entries()).map(([code, subs]) => {
-            const avgCurrent = subs.reduce((s: number, x: SubCategory) => s + x.currentTierScore, 0) / subs.length;
-            const avgTarget = subs.reduce((s: number, x: SubCategory) => s + x.targetTierScore, 0) / subs.length;
-            return { code, name: catNameMap.get(code) ?? code, subcategories: subs, avgCurrentScore: avgCurrent, avgTargetScore: avgTarget };
+            const tierCounts = emptyTierCounts();
+            let belowTargetCount = 0;
+            for (const s of subs) {
+              const t = String(Math.round(s.currentTierScore)) as keyof TierCounts;
+              if (tierCounts[t] !== undefined) tierCounts[t]++;
+              if (s.isBelowTarget) belowTargetCount++;
+            }
+            return {
+              code,
+              name: catNameMap.get(code) ?? code,
+              subcategories: subs,
+              tierCounts,
+              belowTargetCount,
+            };
           });
-          const allSubs = categories.flatMap(c => c.subcategories);
-          const avgCurrent = allSubs.length ? allSubs.reduce((s, x) => s + x.currentTierScore, 0) / allSubs.length : 0;
-          const avgTarget = allSubs.length ? allSubs.reduce((s, x) => s + x.targetTierScore, 0) / allSubs.length : 0;
-          return { name: fnName, code: fnCodeMap.get(fnName) ?? '', categories, avgCurrentScore: avgCurrent, avgTargetScore: avgTarget };
+
+          const fnTierCounts = categories.reduce(
+            (acc, c) => addTierCounts(acc, c.tierCounts),
+            emptyTierCounts()
+          );
+          const fnBelowTarget = categories.reduce((s, c) => s + c.belowTargetCount, 0);
+          const fnTotal = categories.reduce((s, c) => s + c.subcategories.length, 0);
+
+          return {
+            name: fnName,
+            code: fnCodeMap.get(fnName) ?? '',
+            categories,
+            tierCounts: fnTierCounts,
+            belowTargetCount: fnBelowTarget,
+            totalSubcategories: fnTotal,
+          };
         });
 
-        const radarData = functions.map(f => ({
-          function: f.name,
-          current: parseFloat(f.avgCurrentScore.toFixed(2)),
-          target: parseFloat(f.avgTargetScore.toFixed(2)),
-        }));
+        const overallTierCounts = functions.reduce(
+          (acc, f) => addTierCounts(acc, f.tierCounts),
+          emptyTierCounts()
+        );
+        const overallBelowTargetCount = functions.reduce((s, f) => s + f.belowTargetCount, 0);
+        const totalSubcategories = functions.reduce((s, f) => s + f.totalSubcategories, 0);
 
-        const allSubs = functions.flatMap(f => f.categories.flatMap(c => c.subcategories));
-        const overallAvgCurrent = allSubs.reduce((s, x) => s + x.currentTierScore, 0) / allSubs.length;
-
-        const tierCounts: Record<string, number> = { '1': 0, '2': 0, '3': 0, '4': 0 };
-        for (const s of allSubs) {
-          const t = String(Math.round(s.currentTierScore));
-          if (tierCounts[t] !== undefined) tierCounts[t]++;
-        }
-
-        setData({ functions, radarData, overallAvgCurrent, tierCounts });
+        setData({ functions, overallTierCounts, overallBelowTargetCount, totalSubcategories });
         setLoading(false);
       })
       .catch(err => {

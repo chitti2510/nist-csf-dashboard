@@ -1,4 +1,4 @@
-function,functionCode,category_code,category_name,subcategory_code,subcategory_description,implementation_examples,informative_references,controls_checks,Understanding_of_controls_Implemented,current_tier_score,current_tier,recommendation,target_tier,target_tier_score,target_tier_comments,client_comments
+function,functionCode,category_code,category_name,subcategory_code,subcategory_description,implementation_examples,informative_references,controls_checks,Understanding_of_controls_Implemented,current_tier_score,current_Implementation_tier,recommendation,target_Implementation_tier,target_tier_score,target_tier_comments,client_comments
 Detect,DE,DE.CM,Continuous Monitoring,DE.CM-01,"Networks and network services are monitored to find potentially adverse events
 
 This control mandates the implementation of Network Security Monitoring (NSM). It requires the organization to actively capture, analyze, and alert on network traffic patterns to identify active intrusions, malware communication (C2), or data exfiltration.
@@ -2118,7 +2118,7 @@ Active Technical Stack (Strong): The presence of active SIEM and Vulnerability M
 
 Budget Governance Gap (Verification Required): While the outcome is good (tools are bought, people are paid), the mechanism (Budget Strategy) is opaque. We do not know if the security budget is a fixed percentage or ad-hoc. Without a defined budget model, the program acts on ""luck"" rather than ""strategy."" PCDS notes this as an ""Open Item"" for AnsamcAL management validation.
 
-Cost-Risk Transparency (Verification Required): It is unknown if denied budget requests are tracked as ""Accepted Risks."" If the CFO denies a request for a Firewall upgrade, that decision should be recorded as a risk, not just a rejected expense.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive), you must prove that your resources can scale dynamically with the business.
+Cost-Risk Transparency (Verification Required): It is unknown if denied budget requests are tracked as ""Accepted Risks."" If the CFO denies a request for a Firewall upgrade, that decision should be recorded as a risk, not just a rejected expense.",3,Tier 3: Repeatable,"To move to Tier 4: Adaptive, you must prove that your resources can scale dynamically with the business.
 
 Phase 1: The ""Budget Floor"" Definition
 
@@ -2320,7 +2320,7 @@ The Question: ""If I sit at a random employee's desk right now and search 'Secur
 The Question: ""Does your policy mention specific technologies you actually use (e.g., SCADA, Cloud, Hydro Systems)? Or does it look like a generic template downloaded from the internet that mentions 'Mainframes' and 'Tape Drives' that you don't even have?""
 
 4. Evidence of Enforcement
-The Question: ""Can you cite one example in the last 2 years where an employee was disciplined (warning, retraining, or firing) for violating a security policy? If the answer is 'No,' then your policy is toothless, and employees know they can break the rules safely.""","Tier 3: Repeatable (Tier 3: Repeatable) — with Major Observation
+The Question: ""Can you cite one example in the last 2 years where an employee was disciplined (warning, retraining, or firing) for violating a security policy? If the answer is 'No,' then your policy is toothless, and employees know they can break the rules safely.""","Tier 3: Repeatable with Major Observation
 
 PCDS assesses the organization at Tier 3: Repeatable. The existence of a CEO-signed, customized policy that is actively enforced places AnsamcAL well ahead of organizations that treat policy as ""shelfware."" The fact that disciplinary actions have occurred proves the policy has real-world weight.
 
@@ -3976,7 +3976,7 @@ Are security alerts, advisories and directives disseminated to appropriate perso
 
 Use CTI to inform risk and controls:
 Is received CTI used to monitor emerging vulnerabilities, update detection signatures and inform risk assessments and vulnerability management processes
-Do policies and procedures ensure that CTI insights are shared across the organization to maintain currency with recommended practices and technologies",,3,Tier 3: Repeatable,"To progress beyond Level 3 and further improve cyber‑threat‑intelligence capabilities, the organization should:
+Do policies and procedures ensure that CTI insights are shared across the organization to maintain currency with recommended practices and technologies",,3,Tier 3: Repeatable,"To progress beyond Toer 3: Repeatable and further improve cyber‑threat‑intelligence capabilities, the organization should:
 Document internal processes: Formalize a policy that outlines sources of threat intelligence, ingestion methods, validation procedures, and dissemination workflows, even when outsourced to an MSSP. Ensure roles and responsibilities for internal staff are clearly defined.
 
 Measure effectiveness: Establish metrics for CTI activities — such as the number of advisories received, time to disseminate and act on alerts, and detection rates — and review them periodically. Use these metrics to assess the MSSP’s performance and adjust contracts or processes as needed.
@@ -5126,9 +5126,7 @@ Comprehensive Lifecycle Coverage: The organization ensures that security educati
 
 Active Validation (Phishing Simulations): The organization does not rely solely on passive video watching; it actively tests employee reflexes via Quarterly Phishing Simulations. This verifies that the training is translating into actual behavioral changes.
 
-Modern Threat Relevance: The training content is not static. By explicitly including modules on ""Use of AI Tools"" (e.g., ChatGPT/LLM risks), the organization demonstrates agility in addressing emerging threats that traditional curriculums often miss.
-
-Audit Readiness:",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to shift from ""Quarterly Compliance"" to ""Continuous Behavior Modification.""
+Modern Threat Relevance: The training content is not static. By explicitly including modules on ""Use of AI Tools"" (e.g., ChatGPT/LLM risks), the organization demonstrates agility in addressing emerging threats that traditional curriculums often miss.",3,Tier 3: Repeatable,"To move from Tier 3: Repeatable to Tier 4: Adaptive, the goal is to shift from ""Quarterly Compliance"" to ""Continuous Behavior Modification.""
 
 Phase 1: Increase Simulation Frequency (Monthly)
 
@@ -6190,9 +6188,9 @@ Operational Discipline (Strong): The fact that Authorized Caller lists are updat
 
 Regulatory Readiness (Strong): Having specific Law Enforcement contacts defined (Input 3) ensures that if a crime occurs, the reporting process will be smooth, preserving the chain of custody.",3,Tier 3: Repeatable,"To move to Tier 3: Repeatable, you must fix the ""Contractual Gap.""
 
-Phase 1: The  Retainer agreement
+Phase 1: The Retainer agreement
 
-Context: Get a retainership agreement in place with an IR/forensics firm defining fixed no. of hours and additonal number of hours at a a cost. 
+Context: Get a retainership agreement in place with an IR/forensics firm defining fixed no. of hours and additonal number of hours at a cost. 
 
 Action: Negotiate a Retainer with a Forensics/IR firm.
 
